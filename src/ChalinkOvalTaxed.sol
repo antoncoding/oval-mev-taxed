@@ -14,9 +14,9 @@ contract ChainlinkOvalTaxed is MEVController, ChainlinkSourceAdapter, ChainlinkD
     constructor(IAggregatorV3Source source, uint8 decimals, uint256 lockWindow, uint256 maxTraversal, uint256 maxAge)
         MEVController()
         ChainlinkSourceAdapter(source)
-        ChainlinkDestinationAdapter(decimals){}
+        ChainlinkDestinationAdapter(decimals)
+    {}
 
-    
     /**
      * @dev this function is used in unlockLatestValue. This is simply disable that function
      */
