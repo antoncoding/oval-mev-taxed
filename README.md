@@ -1,66 +1,21 @@
-## Foundry
+# MEV-Taxed Oval
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This is a proof-of-concept (POC) repository that modifies the [Oval contract](https://github.com/UMAprotocol/oval-contracts) to implement MEV tax instead of the original on-chain unlocker mechanism.
 
-Foundry consists of:
+## How It Works
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+In this modified version:
 
-## Documentation
+1. Bidders now need to use `unlockLatestValueTaxed()` instead of `unlockLatestValue()`.
+2. When calling `unlockLatestValueTaxed()`, bidders must attach the appropriate amount of ETH as a tax to the protocol.
 
-https://book.getfoundry.sh/
+This implementation leverages the concept of MEV (Miner Extractable Value) taxes to give the back-run opportunity to the transaction with the highest priority fee.
 
-## Usage
+## More Information
 
-### Build
+- For more details about the original Oval workflow, please refer to the [Oval Contracts repository](https://github.com/UMAprotocol/oval-contracts).
+- To learn more about MEV taxes and their potential applications, check out the article [Priority Is All You Need](https://www.paradigm.xyz/2024/06/priority-is-all-you-need) by Paradigm.
 
-```shell
-$ forge build
-```
+## Building the Project
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+To build the project, use the following Forge command:

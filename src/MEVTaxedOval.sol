@@ -10,7 +10,7 @@ import {TaxBase} from "./TaxBase.sol";
  * Oval.sol provides permissioned updating at the execution of an MEV-share auction.
  * This contract is a POC, removing the on-chain unlockers, and instead using the MEV tax to give the back-run opportunity to the transaction with highest priority fee.
  *
- * We need a new Oval contract because the unlockLatestValue function was payable
+ * We need a new Oval contract because the unlockLatestValue function was not payable
  *
  * @custom:security-contact bugs@umaproject.org
  */
